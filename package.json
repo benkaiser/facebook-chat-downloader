@@ -1,0 +1,22 @@
+{
+  "name": "facebook-chat-downloader",
+  "version": "0.1.0",
+  "description": "Utility to download facebook messages",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony index.js"
+  },
+  "repository": {
+    "url": "https://github.com/benkaiser/facebook-chat-downloader",
+    "type": "git"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "author": "Benjamin Kaiser",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.2",
+    "facebook-chat-api": "^1.2.0"
+  }
+}

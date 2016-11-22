@@ -1,0 +1,12 @@
+web:
+  build: .
+  command: npm run nodemon
+  dockerfile: Dockerfile.local
+  environment:
+    PORT: 3000
+    APP_URL: 'http://localhost:3000'
+  ports:
+    - "3000:3000"
+  volumes:
+    - .:/app
+    - /app/node_modules

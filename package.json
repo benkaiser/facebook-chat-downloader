@@ -3,20 +3,38 @@
   "version": "0.1.0",
   "description": "Utility to download facebook messages",
   "main": "index.js",
-  "scripts": {
-    "start": "node --harmony index.js"
-  },
   "repository": {
     "url": "https://github.com/benkaiser/facebook-chat-downloader",
     "type": "git"
-  },
-  "jshintConfig": {
-    "esversion": 6
   },
   "author": "Benjamin Kaiser",
   "license": "MIT",
   "dependencies": {
     "async": "^2.1.2",
-    "facebook-chat-api": "^1.2.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "facebook-chat-api": "^1.2.0",
+    "geohash-coordinates": "^1.1.6",
+    "geolib": "^2.0.21",
+    "moment": "^2.15.2",
+    "mongoose": "^4.6.5",
+    "nodemailer": "^2.6.4",
+    "pug": "^2.0.0-beta6"
+  },
+  "scripts": {
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js -x 'node --harmony' index.js",
+    "start": "node --harmony index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "jshintConfig": {
+    "esversion": 6
+  },
+  "engines": {
+    "node": "6"
+  },
+  "jscsConfig": {
+    "requireTrailingComma": false
   }
 }

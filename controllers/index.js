@@ -3,21 +3,48 @@ var router = express.Router();
 
 var Facebook = require('../services/facebook');
 
-router.get('/', function (req, res) {
+function redirectIfNoCredentials(req, res, next) {
+  if (req.session.email && req.session.password) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.post('/', function(req, res) {
-  let email = req.body.email;
-  let password = req.body.password;
-  Facebook.login(email, password)
+router.post('/', (req, res) => {
+  req.session.email = req.body.email;
+  req.session.password = req.body.password;
+  res.redirect('/conversations');
+});
+
+router.get('/conversations', redirectIfNoCredentials, (req, res) => {
+  Facebook.login(req.session.email, req.session.password)
           .then((fb) => {
             fb.getConversations((conversations) => {
               console.log(conversations);
               res.render('conversations', { conversations: conversations });
             });
           })
-          .catch((err) => console.log('Failed to login:' + err));
+          .catch((err) => res.send(err));
+});
+
+router.get('/conversations/:thread.:method', (req, res) => {
+  let thread = req.params.thread;
+  Facebook.login(req.session.email, req.session.password)
+          .then((fb) => {
+            fb.getConversation(thread, (conversations) => {
+              res.writeHead(200, {
+                'Content-Type': 'application/force-download',
+                'Content-disposition':`attachment; filename=${thread}.json`
+              });
+              res.end(JSON.stringify(conversations, null, 2));
+            });
+          })
+          .catch((err) => res.send(err));
 });
 
 module.exports = router;

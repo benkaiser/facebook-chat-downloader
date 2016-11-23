@@ -1,10 +1,15 @@
+redis:
+  image: redis
 web:
   build: .
   command: npm run nodemon
   dockerfile: Dockerfile.local
   environment:
     PORT: 3000
+    ENV: development
     APP_URL: 'http://localhost:3000'
+  links:
+    - redis
   ports:
     - "3000:3000"
   volumes:

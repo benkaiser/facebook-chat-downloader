@@ -18,6 +18,7 @@
     "facebook-chat-api": "^1.2.0",
     "geohash-coordinates": "^1.1.6",
     "geolib": "^2.0.21",
+    "json2csv": "^3.7.2",
     "moment": "^2.15.2",
     "mongoose": "^4.6.5",
     "nodemailer": "^2.6.4",

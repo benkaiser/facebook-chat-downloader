@@ -15,5 +15,6 @@ block content
       .panel-body
         span.snippet #{conversation.snippet}
       .list-group
-        a(href='/conversations/' + conversation.threadID + '.json')
-          button.list-group-item(type="button") Download JSON
+        each method, type in methods
+          a(href='/conversations/' + conversation.threadID + '.' + type)
+            button.list-group-item(type="button") Download #{method.description}

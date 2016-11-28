@@ -17,7 +17,7 @@ app.use(session({
   saveUninitialized: true,
   secret: 'facebook-chat-downloader-secret',
   store: new RedisStore({
-    host: 'redis'
+    url: process.env.REDIS_URL
   })
 }));
 app.use(require('./controllers'));

@@ -1,46 +1,30 @@
 ## ⬇ Facebook Chat Downloader ⬇
 
-Download the raw json of an entire facebook chat history.
+I host an instance of this at [facebook-download.kaiserapps.com](https://facebook-download.kaiserapps.com/).
 
-### Installation
+However if you are the privacy concious kind or would just like to run it yourself, follow the below developer instructions.
 
-Requires node.js 6+
+### Developer Instructions
 
-Run:
+#### Running in Docker + Docker Compose
 
 ```
-npm install
+bin/go
 ```
 
-or if you have [yarn](https://yarnpkg.com/)
+And you're done! Good to go! try it out on http://localhost:3000
+
+#### Without Docker
+
+You'll need:
+- Node.js 6
+- Redis running
+
+then execute
 
 ```
 yarn --ignore-engines
+npm start
 ```
 
-### Usage
-
-On first run, it will dump a list of the 50 most recent threads, look at the `snippet` in these threads and pick the threadID for the conversation you want:
-
-```
-$ FB_EMAIL=your_email FB_PASSWORD=your_password npm start
-{ threadId: '1234567890',
-  name: 'Your Friend',
-  numberOfMessage: 321 }
-{ threadId: '1234567810',
-...
-```
-
-Then once you have selected a threadID for the conversation, re-run with the
-that threadID set:
-
-```
-$ FB_EMAIL=your_email FB_PASSWORD=your_password THREAD_ID=your_thread_id npm start
-Thread with: Your Friend
-Starting download of 12345 messages...
-Downloaded 10000 messages...
-Downloaded 12345 messages...
-Download completed. See `data.json` file.
-```
-
-💥 You are done! All message data will be in the `data.json` file!
+You can also pass the `REDIS_URL` environment variable to the process to set the correct redis instance. 

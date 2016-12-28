@@ -1,0 +1,22 @@
+extends layout.pug
+
+block content
+  h1 Facebook Chat Downloader
+  p.lead
+    | This is a service to allow you to download your facebook chat history
+    | in various different formats.
+    br
+    | This application does not store your data or send it to third parties. You
+    | can view the source code
+    a(href='https://github.com/benkaiser/facebook-chat-downloader')  on github
+    | .
+  if alert
+    .alert.alert-success(role="alert") #{alert}
+  form(action='/', method='POST')
+    .form-group
+      label(for='email') Facebook Email address
+      input#email.form-control(type='email', name='email', placeholder='Email', required)
+    .form-group
+      label(for='password') Facebook Password
+      input#password.form-control(type='password', name='password', required)
+    button.btn.btn-primary(type='submit') Submit

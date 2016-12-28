@@ -1,0 +1,17 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin-bottom: 20px;
+}
+.conversation {
+  height: 55px;
+  width: 100%;
+}
+.avatar {
+  border-radius: 50%;
+  height: 20px;
+  margin-right: 10px;
+}

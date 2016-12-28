@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+  h1 Conversation List
+  p.lead
+    | Your conversations are displayed below with download options.
+  each conversation in conversations
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          each participant in conversation.otherParticipants
+            img.avatar(src='http://graph.facebook.com/' + participant + '/picture?type=square')
+          span.name #{conversation.full.name}
+          span.badge.pull-right #{conversation.messageCount}
+      .panel-body
+        span.snippet #{conversation.snippet}
+      .list-group
+        each method, type in methods
+          a(href='/conversations/' + conversation.threadID + '.' + type)
+            button.list-group-item(type="button") Download #{method.description}
